@@ -1,0 +1,864 @@
+{
+    "cpu": [
+        {
+            "Model": "AMD Ryzen 9 7950X3D",
+            "Score": 10.0,
+            "Price": 571.48
+        },
+        {
+            "Model": "AMD Ryzen 7 7800X3D",
+            "Score": 9.85,
+            "Price": 369.99
+        },
+        {
+            "Model": "Intel Core i9-13900KS",
+            "Score": 9.57,
+            "Price": 729.99
+        },
+        {
+            "Model": "Intel Core i9-13900K(F)",
+            "Score": 9.5,
+            "Price": 536.99
+        },
+        {
+            "Model": "Intel Core i7-13700K(F)",
+            "Score": 9.3,
+            "Price": 396.98
+        },
+        {
+            "Model": "AMD Ryzen 9 7900X3D",
+            "Score": 9.25,
+            "Price": 449.0
+        },
+        {
+            "Model": "Intel Core i5-13600K(F)",
+            "Score": 8.72,
+            "Price": 285.99
+        },
+        {
+            "Model": "AMD Ryzen 7 7700X",
+            "Score": 8.71,
+            "Price": 348.99
+        },
+        {
+            "Model": "AMD Ryzen 9 7950X",
+            "Score": 8.7,
+            "Price": 583.99
+        },
+        {
+            "Model": "AMD Ryzen 9 7900X",
+            "Score": 8.69,
+            "Price": 424.99
+        },
+        {
+            "Model": "AMD Ryzen 7 5800X3D",
+            "Score": 8.68,
+            "Price": 317.79
+        },
+        {
+            "Model": "Intel Core i9-12900KS",
+            "Score": 8.67,
+            "Price": 494.99
+        },
+        {
+            "Model": "AMD Ryzen 7 7700",
+            "Score": 8.66,
+            "Price": 328.98
+        },
+        {
+            "Model": "AMD Ryzen 5 7600X",
+            "Score": 8.65,
+            "Price": 229.99
+        },
+        {
+            "Model": "Intel Core i9-12900K(F)",
+            "Score": 8.43,
+            "Price": 324.99
+        },
+        {
+            "Model": "Intel Core i9-12900(F)",
+            "Score": 8.42,
+            "Price": 399.99
+        },
+        {
+            "Model": "Intel Core i7-12700K(F)",
+            "Score": 8.41,
+            "Price": 260.52
+        },
+        {
+            "Model": "Intel Core i7-12700(F)",
+            "Score": 8.4,
+            "Price": 289.98
+        },
+        {
+            "Model": "AMD Ryzen 9 5950X",
+            "Score": 8.39,
+            "Price": 79.99
+        },
+        {
+            "Model": "AMD Ryzen 9 5900X",
+            "Score": 8.38,
+            "Price": 288.99
+        },
+        {
+            "Model": "AMD Ryzen 9 7900",
+            "Score": 8.37,
+            "Price": 408.0
+        },
+        {
+            "Model": "Intel Core i5-12600K(F)",
+            "Score": 8.2,
+            "Price": 154.99
+        },
+        {
+            "Model": "AMD Ryzen 5 7600",
+            "Score": 8.19,
+            "Price": 229.0
+        },
+        {
+            "Model": "AMD Ryzen 7 5800X",
+            "Score": 8.18,
+            "Price": 223.0
+        },
+        {
+            "Model": "Intel Core i5-13400(F)",
+            "Score": 7.74,
+            "Price": 185.99
+        },
+        {
+            "Model": "AMD Ryzen 7 5700X",
+            "Score": 7.73,
+            "Price": 169.0
+        },
+        {
+            "Model": "Intel Core i9-11900K(F)",
+            "Score": 7.72,
+            "Price": 328.88
+        },
+        {
+            "Model": "Intel Core i9-10900K(F)",
+            "Score": 7.71,
+            "Price": 359.99
+        },
+        {
+            "Model": "Intel Core i9-10850K",
+            "Score": 7.7,
+            "Price": 299.99
+        },
+        {
+            "Model": "Intel Core i9-9900KS",
+            "Score": 7.69,
+            "Price": 449.99
+        },
+        {
+            "Model": "Intel Core i5-12500",
+            "Score": 7.68,
+            "Price": 202.99
+        },
+        {
+            "Model": "AMD Ryzen 5 5600X",
+            "Score": 7.67,
+            "Price": 169.0
+        },
+        {
+            "Model": "Intel Core i5-12400(F)",
+            "Score": 7.66,
+            "Price": 162.99
+        },
+        {
+            "Model": "Intel Core i7-11700K(F)",
+            "Score": 7.65,
+            "Price": 278.69
+        },
+        {
+            "Model": "Intel Core i7-10700K(F)",
+            "Score": 7.64,
+            "Price": 289.96
+        },
+        {
+            "Model": "Intel Core i7-10700",
+            "Score": 7.63,
+            "Price": 256.99
+        },
+        {
+            "Model": "AMD Ryzen 5 5600",
+            "Score": 7.62,
+            "Price": 129.98
+        },
+        {
+            "Model": "Intel Core i5-11600K(F)",
+            "Score": 7.61,
+            "Price": 208.99
+        },
+        {
+            "Model": "Intel Core i9-9900K",
+            "Score": 7.6,
+            "Price": 439.99
+        },
+        {
+            "Model": "Intel Core i7-9700K(F)",
+            "Score": 7.59,
+            "Price": 315.99
+        },
+        {
+            "Model": "Intel Core i9-9900KF",
+            "Score": 7.58,
+            "Price": 379.99
+        },
+        {
+            "Model": "Intel Core i5-10600K",
+            "Score": 7.57,
+            "Price": 203.97
+        },
+        {
+            "Model": "Intel Core i7-8086K",
+            "Score": 7.56,
+            "Price": 425.0
+        },
+        {
+            "Model": "Intel Core i9-10900X",
+            "Score": 7.55,
+            "Price": 589.99
+        },
+        {
+            "Model": "Intel Core i3-12100(F)",
+            "Score": 7.54,
+            "Price": 92.98
+        },
+        {
+            "Model": "Intel Core i5-11400(F)",
+            "Score": 7.53,
+            "Price": 134.99
+        },
+        {
+            "Model": "Intel Core i7-10700F",
+            "Score": 7.52,
+            "Price": 271.99
+        },
+        {
+            "Model": "Intel Core i7-11700",
+            "Score": 7.51,
+            "Price": 272.49
+        },
+        {
+            "Model": "AMD Ryzen 7 5700G",
+            "Score": 7.5,
+            "Price": 198.99
+        },
+        {
+            "Model": "Intel Core i5-10600KF",
+            "Score": 7.49,
+            "Price": 179.99
+        },
+        {
+            "Model": "AMD Ryzen 5 5500",
+            "Score": 7.48,
+            "Price": 99.0
+        },
+        {
+            "Model": "AMD Ryzen 9 3900XT",
+            "Score": 7.47,
+            "Price": 469.99
+        },
+        {
+            "Model": "Intel Core i7-8700K",
+            "Score": 7.46,
+            "Price": 289.99
+        },
+        {
+            "Model": "AMD Ryzen 9 3950X",
+            "Score": 7.45,
+            "Price": 524.99
+        },
+        {
+            "Model": "AMD Ryzen 9 3900X",
+            "Score": 7.44,
+            "Price": 469.99
+        },
+        {
+            "Model": "AMD Ryzen 7 3800X",
+            "Score": 7.43,
+            "Price": 298.97
+        },
+        {
+            "Model": "Intel Core i9-10980XE",
+            "Score": 7.42,
+            "Price": 999.99
+        },
+        {
+            "Model": "AMD Ryzen Threadripper 3970X",
+            "Score": 7.41,
+            "Price": 1993.99
+        },
+        {
+            "Model": "AMD Ryzen Threadripper 3960X",
+            "Score": 7.4,
+            "Price": 1399.0
+        },
+        {
+            "Model": "AMD Ryzen 7 3800XT",
+            "Score": 7.39,
+            "Price": 399.0
+        },
+        {
+            "Model": "Intel Core i5-10400(F)",
+            "Score": 7.38,
+            "Price": 116.49
+        },
+        {
+            "Model": "AMD Ryzen 7 3700X",
+            "Score": 7.37,
+            "Price": 296.99
+        },
+        {
+            "Model": "AMD Ryzen 5 3600XT",
+            "Score": 7.36,
+            "Price": 199.99
+        },
+        {
+            "Model": "AMD Ryzen Threadripper 3990X",
+            "Score": 7.35,
+            "Price": 3968.99
+        },
+        {
+            "Model": "AMD Ryzen 5 5600G",
+            "Score": 7.34,
+            "Price": 125.5
+        },
+        {
+            "Model": "Intel Core i5-9600K(F)",
+            "Score": 7.33,
+            "Price": 189.99
+        },
+        {
+            "Model": "AMD Ryzen 5 3600X",
+            "Score": 7.32,
+            "Price": 239.0
+        },
+        {
+            "Model": "AMD Ryzen 5 3600",
+            "Score": 7.31,
+            "Price": 109.13
+        },
+        {
+            "Model": "AMD Ryzen 3 3300X",
+            "Score": 7.3,
+            "Price": 120.0
+        },
+        {
+            "Model": "Intel Core i9-7960X",
+            "Score": 7.29,
+            "Price": 1399.99
+        },
+        {
+            "Model": "Intel Core i5-8600K",
+            "Score": 7.28,
+            "Price": 259.99
+        },
+        {
+            "Model": "Intel Core i5-8600",
+            "Score": 7.27,
+            "Price": 224.0
+        },
+        {
+            "Model": "Intel Core i7-7700K",
+            "Score": 7.26,
+            "Price": 329.99
+        },
+        {
+            "Model": "Intel Core i7-6900K",
+            "Score": 7.25,
+            "Price": 1002.99
+        },
+        {
+            "Model": "Intel Core i5-9400F",
+            "Score": 7.23,
+            "Price": 142.99
+        },
+        {
+            "Model": "Intel Core i7-8700",
+            "Score": 7.22,
+            "Price": 216.99
+        },
+        {
+            "Model": "Intel Core i5-8500",
+            "Score": 7.21,
+            "Price": 209.95
+        },
+        {
+            "Model": "Intel Core i5-9400",
+            "Score": 7.2,
+            "Price": 167.65
+        },
+        {
+            "Model": "Intel Core i5-8400",
+            "Score": 7.19,
+            "Price": 189.99
+        },
+        {
+            "Model": "Intel Core i3-9350KF",
+            "Score": 7.18,
+            "Price": 219.99
+        },
+        {
+            "Model": "Intel Core i7-7740X",
+            "Score": 7.16,
+            "Price": 349.18
+        },
+        {
+            "Model": "Intel Core i7-6950X",
+            "Score": 7.15,
+            "Price": 1102.76
+        },
+        {
+            "Model": "Intel Core i7-6850K",
+            "Score": 7.14,
+            "Price": 628.0
+        },
+        {
+            "Model": "Intel Core i7-6700K",
+            "Score": 7.13,
+            "Price": 329.99
+        },
+        {
+            "Model": "AMD Ryzen 7 2700X",
+            "Score": 7.12,
+            "Price": 249.99
+        },
+        {
+            "Model": "Intel Core i9-7980XE",
+            "Score": 7.11,
+            "Price": 1799.98
+        },
+        {
+            "Model": "Intel Core i9-7900X",
+            "Score": 7.1,
+            "Price": 774.99
+        },
+        {
+            "Model": "Intel Core i7-7820X",
+            "Score": 7.09,
+            "Price": 510.63
+        },
+        {
+            "Model": "AMD Ryzen 5 2600X",
+            "Score": 5.92,
+            "Price": 149.99
+        },
+        {
+            "Model": "Intel Core i3-10100",
+            "Score": 5.91,
+            "Price": 109.99
+        },
+        {
+            "Model": "Intel Core i7-5960X",
+            "Score": 5.9,
+            "Price": 399.99
+        },
+        {
+            "Model": "Intel Core i7-6800K",
+            "Score": 5.88,
+            "Price": 416.3
+        },
+        {
+            "Model": "Intel Core i7-5930K",
+            "Score": 5.87,
+            "Price": 250.99
+        },
+        {
+            "Model": "AMD Ryzen Threadripper 2950X",
+            "Score": 5.85,
+            "Price": 620.99
+        },
+        {
+            "Model": "AMD Ryzen Threadripper 2920X",
+            "Score": 5.84,
+            "Price": 386.53
+        },
+        {
+            "Model": "Intel Core i3-8350K",
+            "Score": 5.83,
+            "Price": 179.99
+        },
+        {
+            "Model": "Intel Core i3-10100F",
+            "Score": 5.82,
+            "Price": 77.99
+        },
+        {
+            "Model": "AMD Ryzen 3 3100",
+            "Score": 5.81,
+            "Price": 99.0
+        },
+        {
+            "Model": "Intel Core i7-7800X",
+            "Score": 5.79,
+            "Price": 361.97
+        },
+        {
+            "Model": "AMD Ryzen 5 1600 AF",
+            "Score": 5.78,
+            "Price": 109.99
+        },
+        {
+            "Model": "Intel Core i5-7600K",
+            "Score": 5.77,
+            "Price": 242.99
+        },
+        {
+            "Model": "Intel Core i3-8300",
+            "Score": 5.76,
+            "Price": 147.0
+        },
+        {
+            "Model": "Intel Core i9-7920X",
+            "Score": 5.75,
+            "Price": 794.6
+        },
+        {
+            "Model": "AMD Ryzen Threadripper 1950X",
+            "Score": 5.74,
+            "Price": 417.13
+        },
+        {
+            "Model": "AMD Ryzen Threadripper 1920X",
+            "Score": 5.73,
+            "Price": 249.9
+        },
+        {
+            "Model": "Intel Core i7-7700",
+            "Score": 5.72,
+            "Price": 326.82
+        },
+        {
+            "Model": "AMD Ryzen 7 2700",
+            "Score": 5.71,
+            "Price": 149.99
+        },
+        {
+            "Model": "AMD Ryzen Threadripper 1900X",
+            "Score": 5.7,
+            "Price": 180.09
+        },
+        {
+            "Model": "AMD Ryzen 7 1800X",
+            "Score": 5.69,
+            "Price": 249.99
+        },
+        {
+            "Model": "Intel Core i7-5820K",
+            "Score": 5.68,
+            "Price": 407.09
+        },
+        {
+            "Model": "Intel Core i5-7600",
+            "Score": 5.67,
+            "Price": 229.99
+        },
+        {
+            "Model": "AMD Ryzen Threadripper 2970WX",
+            "Score": 5.66,
+            "Price": 999.99
+        },
+        {
+            "Model": "Intel Core i5-7640X",
+            "Score": 5.65,
+            "Price": 199.99
+        },
+        {
+            "Model": "Intel Core i3-9100",
+            "Score": 5.64,
+            "Price": 109.99
+        },
+        {
+            "Model": "AMD Ryzen Threadripper 2990WX",
+            "Score": 5.63,
+            "Price": 1391.73
+        },
+        {
+            "Model": "AMD Ryzen 7 1700X",
+            "Score": 5.62,
+            "Price": 199.99
+        },
+        {
+            "Model": "AMD Ryzen 5 1600X",
+            "Score": 5.61,
+            "Price": 204.99
+        },
+        {
+            "Model": "Intel Core i5-7500",
+            "Score": 5.6,
+            "Price": 202.0
+        },
+        {
+            "Model": "Intel Core i3-9100F",
+            "Score": 5.59,
+            "Price": 72.99
+        },
+        {
+            "Model": "Intel Core i3-8100",
+            "Score": 5.58,
+            "Price": 119.99
+        },
+        {
+            "Model": "Intel Core i5-7400",
+            "Score": 5.57,
+            "Price": 182.0
+        },
+        {
+            "Model": "AMD Ryzen 7 1700",
+            "Score": 5.41,
+            "Price": 301.72
+        },
+        {
+            "Model": "AMD Ryzen 5 1600",
+            "Score": 5.4,
+            "Price": 104.99
+        },
+        {
+            "Model": "Intel Core i5-6600K",
+            "Score": 5.39,
+            "Price": 219.99
+        },
+        {
+            "Model": "AMD Ryzen 5 1500X",
+            "Score": 5.38,
+            "Price": 152.99
+        },
+        {
+            "Model": "Intel Xeon E3-1231 V3",
+            "Score": 5.35,
+            "Price": 147.18
+        },
+        {
+            "Model": "Intel Core i5-6500",
+            "Score": 5.33,
+            "Price": 189.44
+        },
+        {
+            "Model": "AMD Ryzen 5 4500",
+            "Score": 5.31,
+            "Price": 79.0
+        },
+        {
+            "Model": "Intel Core i3-10105",
+            "Score": 5.29,
+            "Price": 112.98
+        },
+        {
+            "Model": "Intel Core i5-4690",
+            "Score": 5.27,
+            "Price": 219.29
+        },
+        {
+            "Model": "Intel Core i7-6700",
+            "Score": 5.26,
+            "Price": 314.99
+        },
+        {
+            "Model": "Intel Core i3-7350K",
+            "Score": 5.25,
+            "Price": 174.99
+        },
+        {
+            "Model": "Intel Core i3-6320",
+            "Score": 5.24,
+            "Price": 178.7
+        },
+        {
+            "Model": "Intel Core i5-6600",
+            "Score": 5.23,
+            "Price": 246.32
+        },
+        {
+            "Model": "Intel Core i3-6300",
+            "Score": 5.22,
+            "Price": 137.57
+        },
+        {
+            "Model": "AMD Ryzen 5 3400G",
+            "Score": 5.21,
+            "Price": 135.25
+        },
+        {
+            "Model": "AMD Ryzen 3 3200G",
+            "Score": 5.2,
+            "Price": 99.0
+        },
+        {
+            "Model": "AMD Ryzen 5 2400G",
+            "Score": 5.19,
+            "Price": 123.89
+        },
+        {
+            "Model": "AMD Ryzen 5 1400",
+            "Score": 5.18,
+            "Price": 139.99
+        },
+        {
+            "Model": "AMD Ryzen 3 1300X",
+            "Score": 5.17,
+            "Price": 65.99
+        },
+        {
+            "Model": "Intel Core i3-7100",
+            "Score": 5.16,
+            "Price": 129.99
+        },
+        {
+            "Model": "Intel Core i5-6400",
+            "Score": 5.14,
+            "Price": 179.99
+        },
+        {
+            "Model": "Intel Pentium G4620",
+            "Score": 5.13,
+            "Price": 104.99
+        },
+        {
+            "Model": "Intel Core i3-7300",
+            "Score": 5.12,
+            "Price": 157.29
+        },
+        {
+            "Model": "Intel Core i3-6100",
+            "Score": 5.1,
+            "Price": 114.99
+        },
+        {
+            "Model": "AMD Ryzen 3 2200G",
+            "Score": 5.08,
+            "Price": 79.99
+        },
+        {
+            "Model": "Intel Pentium Gold G5400",
+            "Score": 5.07,
+            "Price": 56.99
+        },
+        {
+            "Model": "Intel Pentium Gold G5500",
+            "Score": 4.21,
+            "Price": 91.6
+        },
+        {
+            "Model": "AMD Ryzen 3 1200",
+            "Score": 4.2,
+            "Price": 80.99
+        },
+        {
+            "Model": "Intel Core i3-7320",
+            "Score": 4.19,
+            "Price": 154.66
+        },
+        {
+            "Model": "Intel Pentium Gold G5600",
+            "Score": 4.18,
+            "Price": 92.99
+        },
+        {
+            "Model": "Intel Core i5-4590",
+            "Score": 4.17,
+            "Price": 179.99
+        },
+        {
+            "Model": "AMD FX-9590",
+            "Score": 4.16,
+            "Price": 231.22
+        },
+        {
+            "Model": "Intel Core i5-4460",
+            "Score": 4.15,
+            "Price": 193.78
+        },
+        {
+            "Model": "AMD FX-9370",
+            "Score": 4.13,
+            "Price": 209.95
+        },
+        {
+            "Model": "Intel Pentium G4600",
+            "Score": 4.12,
+            "Price": 96.25
+        },
+        {
+            "Model": "AMD FX-8350",
+            "Score": 4.11,
+            "Price": 84.95
+        },
+        {
+            "Model": "Intel Pentium G4560",
+            "Score": 4.1,
+            "Price": 59.99
+        },
+        {
+            "Model": "Intel Core i3-4330",
+            "Score": 4.09,
+            "Price": 121.88
+        },
+        {
+            "Model": "Intel Core i3-4160",
+            "Score": 4.07,
+            "Price": 157.73
+        },
+        {
+            "Model": "AMD FX-8300",
+            "Score": 4.03,
+            "Price": 143.61
+        },
+        {
+            "Model": "AMD FX-6300",
+            "Score": 4.01,
+            "Price": 88.71
+        },
+        {
+            "Model": "AMD FX-8320E",
+            "Score": 3.99,
+            "Price": 132.61
+        },
+        {
+            "Model": "AMD A8-7600",
+            "Score": 3.89,
+            "Price": 73.32
+        },
+        {
+            "Model": "AMD Athlon 3000G",
+            "Score": 3.3,
+            "Price": 49.0
+        },
+        {
+            "Model": "Intel Celeron G1840",
+            "Score": 3.28,
+            "Price": 49.99
+        },
+        {
+            "Model": "AMD Athlon 240GE",
+            "Score": 3.27,
+            "Price": 63.0
+        },
+        {
+            "Model": "AMD Athlon 220GE",
+            "Score": 3.26,
+            "Price": 63.0
+        },
+        {
+            "Model": "Intel Pentium G4400",
+            "Score": 3.24,
+            "Price": 55.89
+        },
+        {
+            "Model": "AMD FX-4300",
+            "Score": 3.22,
+            "Price": 90.05
+        },
+        {
+            "Model": "AMD Athlon 200GE",
+            "Score": 3.21,
+            "Price": 55.0
+        },
+        {
+            "Model": "Intel Pentium G3250",
+            "Score": 3.2,
+            "Price": 66.66
+        }
+    ]
+}
