@@ -1,6 +1,10 @@
 from enum import IntEnum
 import uuid
+<<<<<<< HEAD
+from dataclasses import dataclass, field
+=======
 from dataclasses import dataclass
+>>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
 
 
 class ComponentTypes(IntEnum):
@@ -11,16 +15,33 @@ class ComponentTypes(IntEnum):
     GPU = 4
 
 
+<<<<<<< HEAD
+@dataclass(kw_only=True, frozen=True, eq=False)
+class Component:
+=======
 @dataclass
 class Component:
     uid = uuid.uuid4()
+>>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
     name: str
     mark: int
     link: str
     price: float
+<<<<<<< HEAD
+    uid: int = field(default_factory=uuid.uuid4)
+    is_empty: bool = field(default=False)
+    component_type = None
+    
+    def __hash__(self) -> int:
+        return hash(str(self.uid))
+    
+        
+@dataclass(kw_only=True, frozen=True, eq=False)
+=======
 
         
 @dataclass
+>>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
 class Motherboard(Component):
     socket: str
     chipset: str
@@ -41,10 +62,18 @@ class Motherboard(Component):
     pcie2_x16_slots: int
     pcie_x4_slots: int
     pcie_x8_slots: int
+<<<<<<< HEAD
+    pci_slots: tuple[str]
+    component_type=ComponentTypes.MOTHERBOARD
+    
+    
+@dataclass(kw_only=True, frozen=True, eq=False)
+=======
     pci_slots: list[str]
     
     
 @dataclass
+>>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
 class Ram(Component):
     memory_speed: int
     ddr_version: int
@@ -52,9 +81,16 @@ class Ram(Component):
     total_ram_size: int
     memory_form_factor: str
     memory_modules: int
+<<<<<<< HEAD
+    component_type=ComponentTypes.RAM
+
+
+@dataclass(kw_only=True, frozen=True, eq=False)
+=======
 
 
 @dataclass
+>>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
 class SSD(Component):
     max_read_sequential: int
     read_random: int
@@ -65,9 +101,16 @@ class SSD(Component):
     pcie: int
     tbw: int
     internal_storage: int
+<<<<<<< HEAD
+    component_type=ComponentTypes.SSD
+    
+        
+@dataclass(kw_only=True, frozen=True, eq=False)
+=======
     
         
 @dataclass
+>>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
 class CPU(Component):
     cpu_type: str
     cpu_socket: str
@@ -85,9 +128,16 @@ class CPU(Component):
     mem_channels: int
     max_mem_size: int
     passmark: int
+<<<<<<< HEAD
+    component_type=ComponentTypes.CPU
+    
+
+@dataclass(kw_only=True, frozen=True, eq=False)
+=======
     
 
 @dataclass
+>>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
 class GPU(Component):
     gpu_clock_speed: float
     gpu_turbo: float
@@ -107,7 +157,11 @@ class GPU(Component):
     dvi: bool
     mini_displayport: bool
     pcie: str
+<<<<<<< HEAD
+    component_type=ComponentTypes.GPU
+=======
 
+>>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
 
 
 type_to_comp_class_map = {

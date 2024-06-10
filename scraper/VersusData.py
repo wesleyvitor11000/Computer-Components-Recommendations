@@ -13,6 +13,115 @@ from .VersusScraper import ElementSource
 data_to_colect_by_comp_type = {
     "motherboard": {
         "class": {
+<<<<<<< HEAD
+            "price": [
+                "natural",
+                0,
+                True,
+            ]
+        },
+        "href": {
+            "socket": [
+                "/en/{name}/cpu-socket",
+                3,
+                False,
+            ],
+            "chipset": [
+                "/en/{name}/compatible-chipsets",
+                3,
+                False,
+            ],
+            "form_factory": [
+                "/en/{name}/form-factor",
+                3,
+                False,
+            ],
+            "max_memory": [
+                "/en/{name}/max-mem-size",
+                3,
+                False,
+            ],
+            "ram_speed": [
+                "/en/{name}/ram-speed-mb-max",
+                3,
+                False,
+            ],
+            "memory_slots": [
+                "/en/{name}/memory-slots",
+                3,
+                False,
+            ],
+            "ddr_version": [
+                "/en/{name}/ddr-version",
+                3,
+                False,
+            ],
+            "memory_channels": [
+                "/en/{name}/mem-channels",
+                3,
+                False,
+            ],
+            "sata3_connectors": [
+                "/en/{name}/sata3-connectors",
+                3,
+                False,
+            ],
+            "m2_sockets": [
+                "/en/{name}/m2-sockets",
+                3,
+                False,
+            ],
+            "u2_sockets": [
+                "/en/{name}/u2-sockets",
+                3,
+                False,
+            ],
+            "sata2_connectors": [
+                "/en/{name}/sata2-connectors",
+                3,
+                False,
+            ],
+            "pcie4_x16-slots": [
+                "/en/{name}/pcie4-x16-slots",
+                3,
+                False,
+            ],
+            "pcie5_x16-slots": [
+                "/en/{name}/pcie5-x16-slots",
+                3,
+                False,
+            ],
+            "pcie3_x16-slots": [
+                "/en/{name}/pcie3-x16-slots",
+                3,
+                False,
+            ],
+            "pcie_x1_slots": [
+                "/en/{name}/pcie-x1-slots",
+                3,
+                False,
+            ],
+            "pci_l_slots": [
+                "/en/{name}/pci-l-slots",
+                3,
+                False,
+            ],
+            "pcie2_x16_slots": [
+                "/en/{name}/pcie2-slots",
+                3,
+                False,
+            ],
+            "pcie_x4_slots": [
+                "/en/{name}/pcie-x4-slots",
+                3,
+                False,
+            ],
+            "pcie_x8_slots": [
+                "/en/{name}/pcie-x8-slots",
+                3,
+                False,
+            ],
+=======
             "price": ["natural", 0, True, ]
         },
         "href": {
@@ -36,6 +145,7 @@ data_to_colect_by_comp_type = {
             "pcie2_x16_slots": ["/en/{name}/pcie2-slots",3,False,],
             "pcie_x4_slots": ["/en/{name}/pcie-x4-slots",3,False,],
             "pcie_x8_slots": ["/en/{name}/pcie-x8-slots",3,False,],
+>>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
         },
     },
     "memory": {
