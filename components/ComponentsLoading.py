@@ -13,6 +13,10 @@ def import_components_from_file(
     components = []
 
     for component in components_dicts:
+        for k, v in component.items():
+            if type(v) == list:
+                component[k] = tuple(v)
+
         component_instance = comp_class(**component)
         components.append(component_instance)
 
@@ -30,7 +34,6 @@ def import_components(
         ct.GPU: "gpus",
     },
 ):
-
     components = {}
     for comp_type, file_var in files_variants.items():
         components[comp_type] = import_components_from_file(

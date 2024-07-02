@@ -12,7 +12,7 @@ import random
 
 def main():
     ignore_saveds = True
-    comps_infos_dir = "res/components/"
+    comps_infos_dir = "res/updated_components/"
 
     os.makedirs(comps_infos_dir, exist_ok=True)
 
@@ -35,19 +35,12 @@ def main():
             with open(base_infos_file, "w") as file:
                 json.dump(base_comp_infos, file)
 
-<<<<<<< HEAD
         i = 0
 
-=======
-
-        i = 0
-        
->>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
         checkpoint_file = f"{comps_infos_dir}/checkpoint_{c}.txt"
         specs_dir = f"{comps_infos_dir}/{c}_specs_versus.json"
         comp_checkpoint = set()
         new_comps = set()
-<<<<<<< HEAD
 
         collected_comps = []
 
@@ -55,31 +48,16 @@ def main():
             with open(specs_dir, "r") as file:
                 collected_comps = json.load(file)
 
-=======
-        
-        collected_comps = []
-        
-        if os.path.exists(specs_dir):
-            with open(specs_dir, "r") as file:
-                collected_comps = json.load(file)
-                
-        
->>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
         if os.path.exists(checkpoint_file):
             with open(checkpoint_file, "r") as file:
                 links = file.readlines()
                 links = [l[:-1] for l in links]
                 comp_checkpoint = set(links)
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
         for component in tqdm(base_comp_infos):
             i += 1
             data_to_colect = data_to_colect_by_comp_type[c].copy()
             comp_link = component["link"]
-<<<<<<< HEAD
 
             if len(comp_checkpoint) >= len(base_comp_infos):
                 break
@@ -88,16 +66,6 @@ def main():
                 # print(f"\nignoring {comp_link}")
                 continue
 
-=======
-            
-            if len(comp_checkpoint) >= len(base_comp_infos):
-                break
-            
-            if comp_link in comp_checkpoint:
-                # print(f"\nignoring {comp_link}")
-                continue
-            
->>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
             new_comps.add(comp_link)
 
             if "href" in data_to_colect.keys():
@@ -113,7 +81,6 @@ def main():
             collected_comps.append(component | comp_specific_infos)
 
             if i % 5 == 0 or i >= len(base_comp_infos) - 1:
-<<<<<<< HEAD
                 with open(checkpoint_file, "a") as file:
                     [file.write(f"{comp}\n") for comp in new_comps]
 
@@ -128,27 +95,6 @@ def main():
             if i % 250 == 0:
                 time.sleep(random.uniform(8, 13))
 
-=======
-                with open(checkpoint_file, "a")  as file:
-                    [file.write(f"{comp}\n") for comp in new_comps]
-                
-                with open(specs_dir, "w") as file:
-                    json.dump(collected_comps, file)
-                    
-                new_comps = set()
-
-            if i % 50 == 0:
-                time.sleep(
-                    random.uniform(3, 5)
-                )
-                
-            if i % 250 == 0:
-                time.sleep(
-                    random.uniform(8, 13)
-                )
-                
-            
->>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
         component_type_scraper.close_scraper()
 
         outp_specs_file = pd.ExcelWriter(f"res/components/{c}_specs_versus.xlsx")

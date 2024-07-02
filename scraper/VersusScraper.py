@@ -6,7 +6,7 @@ import random
 from selenium import webdriver
 from enum import Enum
 
-from .Scraper import Scraper
+from Scraper import Scraper
 
 
 class ElementSource(Enum):

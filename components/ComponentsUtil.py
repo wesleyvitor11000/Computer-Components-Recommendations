@@ -1,5 +1,8 @@
 from .Component import ComponentTypes as ct, type_to_comp_class_map, Component
 from pprint import pprint
+import os
+import pickle
+from tqdm import tqdm
 
 attributes_of_interest = {
     ct.MOTHERBOARD: [
@@ -23,11 +26,11 @@ attributes_of_interest = {
         "ram_speed_max",
         "integrated_graphics",
     ],
-    ct.GPU: ["is_empty", "pcie"]
+    ct.GPU: ["is_empty", "pcie"],
 }
 
 
-def create_fake_component(component_type: ct, **kwargs):
+def create_fake_component(component_type: ct, **kwargs) -> Component:
     comp_class = type_to_comp_class_map[component_type]
 
     atributes = {
@@ -43,19 +46,79 @@ def create_fake_component(component_type: ct, **kwargs):
     return comp_class(**atributes)
 
 
-def get_component_group_key(component, attributes):
+def get_components_hamming_distances(components, cache_path=None):
+    cache_file = ""
+
+    if cache_path:
+        cache_file = f"{cache_path}/components_distances.pickle"
+
+        if os.path.exists(cache_file):
+            print("loading hamming distances...")
+            with open(cache_file, "rb") as file:
+                components_distances = pickle.load(file)
+
+            return components_distances
+
+    os.makedirs(cache_path, exist_ok=True)
+    components_distances = {}
+
+    print("calculating components distances...")
+    for tp in tqdm(ct):
+        attrs = get_attributes_names_from_component_type(tp)
+
+        for comp1 in components[tp]:
+
+            components_distances[comp1] = {}
+
+            for comp2 in components[tp]:
+                distance = 0
+
+                for attr in attrs:
+                    if getattr(comp1, attr) != getattr(comp2, attr):
+                        distance += 1
+
+                components_distances[comp1][comp2] = distance
+
+    if cache_path:
+        with open(cache_file, "wb") as file:
+            pickle.dump(components_distances, file)
+
+    return components_distances
+
+
+def save_components(components, file_path):
+    with open(file_path, "wb") as file:
+        pickle.dump(components, file)
+
+
+def load_components(file_path):
+    with open(file_path, "rb") as file:
+        components = pickle.load(file)
+
+    return components
+
+
+def get_attributes_names_from_component_type(component_type):
+    attrs_names = set(type_to_comp_class_map[component_type].__annotations__) - set(
+        Component.__annotations__
+    )
+    return attrs_names
+
+
+def get_component_group_key(component, attributes_names=None):
     attributes_values = []
-    
-    for attr in attributes:
+
+    if not attributes_names:
+        attributes_names = attributes_of_interest[component.component_type]
+
+    for attr in attributes_names:
         attr_value = getattr(component, attr)
-        
+
         if type(attr_value) == list:
-            attr_value = str(attr_value)
-            
-        attributes_values.append(
-            (attr, attr_value)
-        )
-    
+            attr_value = tuple(attr_value)
+
+        attributes_values.append((attr, attr_value))
+
     return tuple(attributes_values)
 
 
@@ -71,37 +134,26 @@ def group_components_attributes(components, attributes):
 
             grouped_attributes[comp_type][comp_group_key].append(comp)
 
-        print(len(grouped_attributes[comp_type].keys()))
-    
+        print(comp_type.name, len(grouped_attributes[comp_type].keys()))
+
     return grouped_attributes
 
 
 def convert_components_groups_to_components(grouped_attributes: dict):
     name_pattern = "{comp_type}_group_{n}"
     groups_components = {}
-    
+
     for comp_type, comp_groups in grouped_attributes.items():
         groups = comp_groups.keys()
         groups_components[comp_type] = []
-        
+
         for n, group in enumerate(groups):
-            group_name = name_pattern.format(comp_type = comp_type.name, n = n)
-            attributes = {}
-            
-            for attr, attr_value in group:
-                if type(attr_value) == str and len(attr_value) > 0 and attr_value[0] == "[":
-                    attr_value = attr_value[1:-1]
-                    attr_value = attr_value.split(",")
-                    attr_value = [element.replace("'", "") for element in attr_value]
-                    # attr_value = [element.replace("'", "").replace(" ", "") for element in attr_value]
-                    
-                    
-                attributes[attr] = attr_value
-                
+            group_name = name_pattern.format(comp_type=comp_type.name, n=n)
+            attributes = {attr: attr_value for attr, attr_value in group}
+
             attributes["name"] = group_name
-            
+
             group_component = create_fake_component(comp_type, **attributes)
             groups_components[comp_type].append(group_component)
-    
+
     return groups_components
-            

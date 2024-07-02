@@ -11,21 +11,27 @@ class ComponentTypes(IntEnum):
     GPU = 4
 
 
-@dataclass(kw_only=True, frozen=True, eq=False)
+@dataclass(kw_only=True, eq=False)
 class Component:
     name: str
     mark: int
     link: str
     price: float
-    uid: int = field(default_factory=uuid.uuid4)
+    currency: str
+    uid: uuid.UUID = field(default_factory=uuid.uuid4)
     is_empty: bool = field(default=False)
     component_type = None
-    
+
     def __hash__(self) -> int:
-        return hash(str(self.uid))
-    
-        
-@dataclass(kw_only=True, frozen=True, eq=False)
+        return hash(self.uid.int)
+
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            return hash(self) == hash(other)
+        return False
+
+
+@dataclass(kw_only=True, eq=False)
 class Motherboard(Component):
     socket: str
     chipset: str
@@ -36,32 +42,33 @@ class Motherboard(Component):
     ddr_version: int
     memory_channels: int
     sata3_connectors: int
+    sata2_connectors: int
     m2_sockets: int
     u2_sockets: int
     pcie4_x16_slots: int
     pcie5_x16_slots: int
     pcie3_x16_slots: int
-    pcie_x1_slots:int
+    pcie_x1_slots: int
     pci_l_slots: int
     pcie2_x16_slots: int
     pcie_x4_slots: int
     pcie_x8_slots: int
     pci_slots: tuple[str]
-    component_type=ComponentTypes.MOTHERBOARD
-    
-    
-@dataclass(kw_only=True, frozen=True, eq=False)
+    component_type = ComponentTypes.MOTHERBOARD
+
+
+@dataclass(kw_only=True, eq=False)
 class Ram(Component):
     memory_speed: int
     ddr_version: int
     memory_size: int
     total_ram_size: int
-    memory_form_factor: str
+    form_factor: str
     memory_modules: int
-    component_type=ComponentTypes.RAM
+    component_type = ComponentTypes.RAM
 
 
-@dataclass(kw_only=True, frozen=True, eq=False)
+@dataclass(kw_only=True, eq=False)
 class SSD(Component):
     max_read_sequential: int
     read_random: int
@@ -72,14 +79,14 @@ class SSD(Component):
     pcie: int
     tbw: int
     internal_storage: int
-    component_type=ComponentTypes.SSD
-    
-        
-@dataclass(kw_only=True, frozen=True, eq=False)
+    component_type = ComponentTypes.SSD
+
+
+@dataclass(kw_only=True, eq=False)
 class CPU(Component):
     cpu_type: str
     cpu_socket: str
-    compatible_chipsets: list[str]
+    compatible_chipsets: tuple[str]
     integrated_graphics: bool
     pcie: str
     cpu_threads: int
@@ -93,10 +100,10 @@ class CPU(Component):
     mem_channels: int
     max_mem_size: int
     passmark: int
-    component_type=ComponentTypes.CPU
-    
+    component_type = ComponentTypes.CPU
 
-@dataclass(kw_only=True, frozen=True, eq=False)
+
+@dataclass(kw_only=True, eq=False)
 class GPU(Component):
     gpu_clock_speed: float
     gpu_turbo: float
@@ -116,7 +123,7 @@ class GPU(Component):
     dvi: bool
     mini_displayport: bool
     pcie: str
-    component_type=ComponentTypes.GPU
+    component_type = ComponentTypes.GPU
 
 
 type_to_comp_class_map = {
