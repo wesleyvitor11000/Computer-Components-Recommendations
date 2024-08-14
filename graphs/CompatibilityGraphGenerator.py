@@ -306,8 +306,9 @@ class CompatibilityGraphGenerator:
                         if compatible:
                             G.add_edge(comp, constr_comp)
 
-        print(f"{i} iterations.")
         print(f"edges: {len(G.edges)}")
+        print(f"vertices: {len(G.nodes)}")
+        
 
         # pos = nx.shell_layout(G)
         # labels = {node: node.name for node in G.nodes()}

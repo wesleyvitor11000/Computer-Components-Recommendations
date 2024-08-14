@@ -22,8 +22,8 @@ components_priorities_by_use = {
     },
     ComputerUses.GAMING: {
         ct.MOTHERBOARD: 0.3,
-        ct.RAM: 0.4,
-        ct.SSD: 0.2,
+        ct.RAM: 0.5,
+        ct.SSD: 0.3,
         ct.GPU: 0.9,
         ct.CPU: 0.8,
     },

@@ -1,0 +1,1 @@
+{"computer_use": "STUDY", "budget": 30000, "individuals_per_graph": 5, "generations": 200, "threshold_iterations": 10, "random_selection": false, "beta": 0.5, "cmax": 2, "threshold_a": 0.9}

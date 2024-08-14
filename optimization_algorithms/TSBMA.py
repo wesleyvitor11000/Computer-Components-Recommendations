@@ -3,7 +3,9 @@ from components.Component import ComponentTypes as ct, Component, type_to_comp_c
 import components.ComponentsUtil as comp_util
 from random import choice, sample, randrange, random
 import numpy as np
+import pandas as pd
 from tqdm import tqdm
+from time import time
 
 
 class TSBMA(OptimizationAlgorithm):
@@ -11,10 +13,10 @@ class TSBMA(OptimizationAlgorithm):
         self, components, compatibility_graphs, cache_path="res/cache/"
     ) -> None:
         super().__init__(compatibility_graphs)
-        self.prohibited_solutions = set()
         self.components_hamming_distances = comp_util.get_components_hamming_distances(
             components, cache_path=cache_path
         )
+        self.prohibited_solutions = None
 
     def _swap_random_components(
         self,
@@ -97,6 +99,7 @@ class TSBMA(OptimizationAlgorithm):
         min_components_to_swap=1,
         max_components_to_swap=2,
         components_priorities=None,
+        threshold_factor=0.5
     ):
         population = []
 
@@ -112,18 +115,18 @@ class TSBMA(OptimizationAlgorithm):
 
                 threshold = (
                     self._calculate_individual_score(individual, components_priorities)
-                    * 0.4
+                    * threshold_factor
                 )
-                # individual = self.threshold_search(
-                #     individual,
-                #     threshold,
-                #     budget,
-                #     max_swap_iterations,
-                #     min_components_to_swap,
-                #     max_components_to_swap,
-                #     False,
-                #     components_priorities=components_priorities
-                # )
+                individual = self.threshold_search(
+                    individual,
+                    threshold,
+                    budget,
+                    max_swap_iterations,
+                    min_components_to_swap,
+                    max_components_to_swap,
+                    False,
+                    components_priorities=components_priorities
+                )
 
                 population.append(individual)
 
@@ -152,6 +155,7 @@ class TSBMA(OptimizationAlgorithm):
 
         return distance
 
+
     def calculate_individual_hamming_distances_mean(self, individual, population):
         distances_sum = 0
 
@@ -167,31 +171,48 @@ class TSBMA(OptimizationAlgorithm):
 
         return distances_mean
 
+
+    def calculate_population_distances(self, population):
+        pop_size = len(population)
+        distances_matrix = np.zeros((pop_size, pop_size))
+        distances_mean = np.zeros((pop_size))
+        
+        for i in range(pop_size):
+            distances_sum = 0
+            for j in range(i, pop_size, 1):
+                distance = self.calculate_individuals_hamming_distance(population[j], population[i])
+                distances_matrix[i][j] = distance
+                distances_sum += distance
+                
+            distances_sum += np.sum(distances_matrix[:i,i])
+            
+            distances_mean[i] = distances_sum / pop_size
+                
+        return distances_mean    
+
+
     def update_distances(
         self,
         population,
         distances=None,
-        leaving_individual=None,
+        removed_individual=None,
         entering_individual=None,
     ):
         if distances is None:
-            distances = [
-                self.calculate_individual_hamming_distances_mean(ind, population)
-                for ind in population
-            ]
-            distances = np.array(distances)
-        else:
-            if leaving_individual is not None:
+            distances = self.calculate_population_distances(population)            
+        else:    
+            if removed_individual is not None:
                 for i in range(len(population)):
                     distance_to_leaving_individual = (
                         self.calculate_individuals_hamming_distance(
-                            population[i], leaving_individual
+                            population[i], removed_individual
                         )
                     )
-                    updated_distance = distances[i] - (
-                        distance_to_leaving_individual / (len(population) + 1)
-                    )
-                    distances[i] = updated_distance
+                    total_distances = distances[i] * (len(population) + 1)
+                    new_total_distances = total_distances - distance_to_leaving_individual
+                    updated_distance_mean = new_total_distances / len(population)
+                    
+                    distances[i] = updated_distance_mean
 
             if entering_individual is not None:
                 for i in range(len(population)):
@@ -200,22 +221,27 @@ class TSBMA(OptimizationAlgorithm):
                             population[i], entering_individual
                         )
                     )
-                    updated_distance = distances[i] + (
-                        distance_to_entering_individual / (len(population) + 1)
-                    )
-                    distances[i] = updated_distance
+                    total_distances = distances[i] * (len(population))
+                    new_total_distances = total_distances + distance_to_entering_individual
+                    updated_distance_mean = new_total_distances / (len(population) + 1)
+                    
+                    distances[i] = updated_distance_mean
 
         return distances
 
-    def calculate_individuals_goodness(self, distances, pontuation, beta=0.7):
+
+    def calculate_individuals_goodness(self, distances, pontuations, min_pontuation=None, max_pontuation=None, beta=0.7):
         d_min = np.min(distances)
         d_max = np.max(distances)
+        
+        if not min_pontuation:
+            min_pontuation = np.min(pontuations)
 
-        f_min = np.min(pontuation)
-        f_max = np.max(pontuation)
-
-        normalized_f = (pontuation - f_min) / (f_max - f_min)
+        if not max_pontuation:
+            max_pontuation = np.max(pontuations)
+            
         normalized_d = (distances - d_min) / (d_max - d_min)
+        normalized_f = (pontuations - min_pontuation) / (max_pontuation - min_pontuation)
 
         scores = beta * normalized_f + (1 - beta) * normalized_d
 
@@ -255,7 +281,7 @@ class TSBMA(OptimizationAlgorithm):
                 comp_2_price = parent_2[tp].price
 
                 if comp_1_price > remaining_budget and comp_2_price > remaining_budget:
-                    return choice((parent_1, parent_2))
+                    return choice((parent_1, parent_2)) # TODO remover o tipo de commom_graphs_components_types
                 elif (
                     comp_1_price <= remaining_budget and comp_2_price > remaining_budget
                 ):
@@ -343,7 +369,7 @@ class TSBMA(OptimizationAlgorithm):
         while i < max_iterations:
             components_to_swap = randrange(
                 min_components_to_swap, max_components_to_swap
-            )
+            )  if max_components_to_swap != 1 else 1
             swapped_individual = self._swap_random_components(
                 current_individual, components_to_swap, budget, can_change_of_subgraph
             )
@@ -354,10 +380,12 @@ class TSBMA(OptimizationAlgorithm):
 
             if (
                 swapped_individual_mark >= threshold
-                and swapped_individual_key not in self.prohibited_solutions
+                and (self.prohibited_solutions is None or swapped_individual_key not in self.prohibited_solutions)
             ):
                 current_individual = swapped_individual
-                self.prohibited_solutions.add(swapped_individual_key)
+                
+                if self.prohibited_solutions is not None:
+                    self.prohibited_solutions.add(swapped_individual_key)
 
             if swapped_individual_mark > best_mark:
                 best_individual = swapped_individual
@@ -375,30 +403,40 @@ class TSBMA(OptimizationAlgorithm):
         individuals_per_graph=5,
         threshold_iterations=5,
         min_components_to_swap=1,
-        max_components_to_swap=2,
+        max_components_to_swap=1,
         components_priorities=None,
         random_parents=False,
-        score_beta=0.7
+        score_beta=0.7,
+        threshold_factor=0.9,
+        initialization_threshold_factor=0.9,
+        use_prohibition_mecanism=True
     ):
-
-        self.prohibited_solutions = set()
-        print("initializing population...")
+        start_time = time()
+        history = []
+        
+        self.prohibited_solutions = set() if use_prohibition_mecanism else None
+        # print("initializing population...")
         population = self._initialize_population(
             budget,
             individuals_per_graph,
             threshold_iterations,
             min_components_to_swap,
             max_components_to_swap,
-            components_priorities=components_priorities
+            components_priorities=components_priorities,
+            threshold_factor=initialization_threshold_factor
         )
+        
         distances = self.update_distances(population)
         marks = self._calculate_population_score(population, components_priorities)
 
         best_population_individual_index = np.argmax(marks)
         best_mark = marks[best_population_individual_index]
         best_individual = population[best_population_individual_index]
+        
+        min_mark = np.min(marks)
+        max_mark = best_mark
 
-        for g in range(generations):
+        for g in tqdm(range(generations)):
             parent_1, parent_2 = population[
                 self.select_individuals_index(population, marks, random_parents)
             ]
@@ -407,7 +445,7 @@ class TSBMA(OptimizationAlgorithm):
                 temp_individual, components_priorities
             )
 
-            threshold = temp_individual_mark * 0.5
+            threshold = temp_individual_mark * threshold_factor
             
             new_individual = self.threshold_search(
                 temp_individual,
@@ -434,18 +472,22 @@ class TSBMA(OptimizationAlgorithm):
                 ),
             )
             marks = np.append(marks, new_individual_mark)
+            
+            min_mark = min(min_mark, new_individual_mark)
+            max_mark = max(max_mark, new_individual_mark)
 
-            scores = self.calculate_individuals_goodness(distances, marks, score_beta)
+            scores = self.calculate_individuals_goodness(distances, marks, min_mark, max_mark, beta=score_beta)
             leaving_individual_index = np.argmin(scores)
+            leaving_individual = population[leaving_individual_index]
 
             population = np.delete(population, leaving_individual_index)
             distances = np.delete(distances, leaving_individual_index)
             marks = np.delete(marks, leaving_individual_index)
 
             distances = self.update_distances(
-                population, distances, entering_individual=new_individual
+                population, distances, removed_individual=leaving_individual
             )
-
+            
             if new_individual_mark > best_mark:
                 if leaving_individual_index >= len(population):
                     best_population_individual_index = np.argmax(marks)
@@ -456,9 +498,20 @@ class TSBMA(OptimizationAlgorithm):
                     best_individual = new_individual
 
             price = sum([c.price for c in best_individual.values()])
-            print(f"gen: {g};\t best mark: {best_mark * 100}; \tprice: {price}")
+            generation_end_time = time()
+            
+            history.append({
+                "generation": g,
+                "score": best_mark,
+                "price": price,
+                "time": generation_end_time - start_time,
+            })
+            # print(f"gen: {g};\t best mark: {best_mark * 100}; \tprice: {price}")
+            df = pd.DataFrame(history)
+            df.to_csv("generations_test.csv")
 
 
-        ind = [f"{c.component_type.name}: {c.name}\t (price: R$ {c.price}, mark: {c.mark}, link: {c.link})" for c in best_individual.values()]
-        print()
-        print(*ind, sep="\n")
+        # ind = [f"{c.component_type.name}: {c.name}\t (price: {c.price}) link: {c.link}" for c in best_individual.values()]
+        # print(*ind, sep="\n")
+
+        return best_individual, best_mark, price, history

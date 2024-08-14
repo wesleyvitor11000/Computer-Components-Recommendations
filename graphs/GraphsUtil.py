@@ -3,9 +3,8 @@ from components.Component import ComponentTypes as ct
 from components import ComponentsUtil
 import pickle
 import os
-from matplotlib import pyplot as plt
 from tqdm import tqdm
-import yaml
+from time import time
 
 
 def get_separated_components_from_graph(graph):
@@ -64,8 +63,15 @@ def find_valid_cliques_in_graph(graph, min_types_count=None):
     c = 0
     print("filtering valid cliques...")
     clq1 = None
+    total_time=0
+    
+    start_time = time()
     for clq in cliques:
+        end_time = time()
+        total_time += (end_time-start_time)
         c += 1
+        
+        print(f"clique {c}: média de {total_time/c} segundos.")
 
         print(f"verifying click {c} with len: {len(clq)}")
 
@@ -82,12 +88,15 @@ def find_valid_cliques_in_graph(graph, min_types_count=None):
                 break
 
         if len(types) != len(ct):
+            start_time = time()
             continue
 
         if not clq1:
             clq1 = clq
 
         valid_cliques.add(tuple(sorted(clq, key=lambda x: x.name)))
+         
+        start_time = time()
 
     print(f"{len(valid_cliques)} valid cliques from {c}")
     return valid_cliques

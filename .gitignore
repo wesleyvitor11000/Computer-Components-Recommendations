@@ -1,6 +1,2 @@
-<<<<<<< HEAD
 .venv/
-res/graphs/
-=======
-.venv/
->>>>>>> 7d96dbbfbc4c303d1624387f1b28394699a94866
+results/

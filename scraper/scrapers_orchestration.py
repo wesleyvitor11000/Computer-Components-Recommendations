@@ -12,7 +12,7 @@ import random
 
 def main():
     ignore_saveds = True
-    comps_infos_dir = "res/updated_components/"
+    comps_infos_dir = "res/components/"
 
     os.makedirs(comps_infos_dir, exist_ok=True)
 
