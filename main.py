@@ -95,7 +95,7 @@ def main():
     computer_uses_names = {use.name: use for use in ComputerUses}
     
     while True:
-        config_path = input("Digite o caminho para o arquivo, ou 0 para sair:\n")
+        config_path = input("Digite o caminho para o arquivo de configuração, ou 0 para sair:\n")
         
         if config_path == "0":
             break

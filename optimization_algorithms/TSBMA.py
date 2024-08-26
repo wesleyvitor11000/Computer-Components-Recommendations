@@ -323,29 +323,6 @@ class TSBMA(OptimizationAlgorithm):
 
         return new_individual
 
-    def individual_mutation(self, individual, budget, mutation_probability=0.01):
-        components_to_swap = np.random.binomial(len(individual), mutation_probability)
-
-        if components_to_swap > 0:
-            mutated_individual = self._swap_random_components(
-                individual, components_to_swap, budget, True
-            )
-            return mutated_individual, True
-
-        return individual, False
-
-    def population_mutation(
-        self, population, distances, budget, mutation_probability=0.01
-    ):
-        for i in range(len(population)):
-            population[i], has_mutated = self.individual_mutation(
-                population[i], budget, mutation_probability
-            )
-
-            if has_mutated:
-                distances[i] = self.calculate_individual_hamming_distances_mean(
-                    population[i], population
-                )
 
     def threshold_search(
         self,
@@ -395,6 +372,7 @@ class TSBMA(OptimizationAlgorithm):
                 i += 1
 
         return best_individual
+    
 
     def calculate_best_solution(
         self,
@@ -506,12 +484,5 @@ class TSBMA(OptimizationAlgorithm):
                 "price": price,
                 "time": generation_end_time - start_time,
             })
-            # print(f"gen: {g};\t best mark: {best_mark * 100}; \tprice: {price}")
-            df = pd.DataFrame(history)
-            df.to_csv("generations_test.csv")
-
-
-        # ind = [f"{c.component_type.name}: {c.name}\t (price: {c.price}) link: {c.link}" for c in best_individual.values()]
-        # print(*ind, sep="\n")
 
         return best_individual, best_mark, price, history
